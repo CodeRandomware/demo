@@ -36,8 +36,8 @@ const users = [
   },
   {
     "id": 8,
-    "fname": "123",
-    "lname": "234"
+    "fname": "Ana",
+    "lname": "May"
   },
   {
     "id": 9,
@@ -48,6 +48,11 @@ const users = [
     "id": 10,
     "fname": "Juxtin",
     "lname": "Arox"
+  },
+  {
+    "id": 11,
+    "fname": "Janro",
+    "lname": "Duct"
   }
 ] 
  module.exports = users
