@@ -65,10 +65,3 @@ export const deleteUser = async (userid: number) => {
     return error;
   }
 };
-
-// //Promise
-// export const getter = (id: number) => {
-//   displayUsers().then((value) => {
-//     console.log(value);
-//   });
-// };
