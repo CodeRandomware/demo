@@ -11,6 +11,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const userModel = model("week1_demos", userSchema);
+const userModel = model("usersdbs", userSchema);
 
 export default userModel;

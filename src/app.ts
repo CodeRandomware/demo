@@ -53,10 +53,10 @@ route.post("/users/login", async (ctx: Context) => {
     };
   } else {
     ctx.response.status = 200;
-    const result = userx.addUser(Number(userID), fname, lname);
+    userx.addUser(Number(userID), fname, lname);
     ctx.body = {
       text: `Hello ${fname} ${lname} \n\n <a href="/users"> back to home </a>`,
-      message: result,
+      message: "User Added",
     };
   }
 });
