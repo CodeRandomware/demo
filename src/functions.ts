@@ -1,45 +1,39 @@
-// Module
-export const users = require("../models/data.js");
-const { writeFileSync } = require("fs");
+// model
+import userModel from "../models/user";
 
-interface userz {
-  id: number;
-  fname: string;
-  lname: string;
-}
+//Display all Users
+export const displayUsers = async () => {
+  return userModel.find({});
+};
 
 // Find User
-export const findUser = (id: number) => {
-  const singleUser = users.find((user: userz) => user.id === id);
-  return singleUser;
+export const findUser = async (userid: number) => {
+  return userModel.findOne({ userID: userid });
 };
 
 // POST
-export const addUser = (fname: string, lname: string) => {
-  const user = users.slice(-1);
-  const id = user[0].id + 1;
-  users.push({ id, fname, lname });
-  storeData();
+export const addUser = (
+  userid: number,
+  userFname: string,
+  userLname: string
+) => {
+  userModel.create({ userID: userid, fname: userFname, lname: userLname });
 };
 
 // PUT
-export const updateUser = (fname: string, lname: string, id: number) => {
-  const index = users.findIndex((user: userz) => user.id === id);
-  users[index].fname = fname;
-  users[index].lname = lname;
-  storeData();
+export const updateUser = async (
+  userFname: string,
+  userLname: string,
+  userid: number
+) => {
+  return userModel.findOneAndUpdate(
+    { userID: userid },
+    { fname: userFname, lname: userLname },
+    { new: true }
+  );
 };
 
 //DELETE
-export const deleteUser = (id: number) => {
-  const index = users.findIndex((user: userz) => user.id === id);
-  users.splice(index, 1);
-  storeData();
+export const deleteUser = async (userid: number) => {
+  return userModel.findOneAndRemove({ userID: userid });
 };
-
-export function storeData() {
-  writeFileSync(
-    "./models/data.js",
-    `const users = ${JSON.stringify(users, null, 2)} \n module.exports = users`
-  );
-}
